@@ -1,8 +1,6 @@
 name: Update Gradle Wrapper
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
+on: workflow_dispatch
 
 jobs:
   update-gradle-wrapper:
@@ -10,8 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Update Gradle Wrapper
-        uses: gradle-update/update-gradle-wrapper-action@v1
+        uses: yeikel/update-gradle-wrapper-action@b7ab23d6fa1abab02767e5aaf7077bb20f1e9486
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+         labels: dependencies
+         distributions-base-url: "https://services.gradle.org/distributions"
